@@ -1,0 +1,22 @@
+{
+  "name": "etsyapi",
+  "version": "1.0.0",
+  "description": "apiforetsy",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halilibrahimdemircan/etsyapi.git"
+  },
+  "author": "bossman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/halilibrahimdemircan/etsyapi/issues"
+  },
+  "homepage": "https://github.com/halilibrahimdemircan/etsyapi#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
