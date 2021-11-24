@@ -1,21 +1,23 @@
 const { default: axios, Axios } = require("axios");
+const { count } = require("console");
 const express = require("express");
 const app = express();
 const port = 8000;
 let url = "https://openapi.etsy.com/v3/application/listings/active";
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   //   res.send("Hello World!");
-  let min_price = 0;
-  let max_price = 0.5;
-  let taxonomy_id = 66;
-  let count = 0;
 
-  for (let index = 0; index < 100; index++) {
-    axios
+  let taxonomy_id = 66;
+  let min_price = 0.976;
+  let gap = 0.0111;
+  let count = 1;
+  for (let index = 0; index < count; index++) {
+    await axios
       .get(
-        url +
-          `?taxonomy_id=${taxonomy_id}&min_price=${min_price}&max_price=${max_price}`,
+        `https://openapi.etsy.com/v3/application/listings/active?taxonomy_id=${taxonomy_id}&min_price=${min_price}&max_price=${
+          min_price + gap
+        }`,
         {
           headers: {
             "x-api-key": "uyd8c07q7pcf6wf2qjrbefp3",
@@ -23,12 +25,14 @@ app.get("/", (req, res) => {
         }
       )
       .then((response) => {
+        console.log(min_price, "-", min_price + gap, " ", response.data.count);
+        min_price += gap;
+
         count = response.data.count;
-        console.log(min_price, "-", max_price, "=> ", count);
-        min_price += 0.5;
-        max_price += 0.5;
-      });
+      })
+      .catch((err) => console.log("error", err.data.error));
   }
+  JSC.Chart("chartDiv", {});
 });
 
 app.listen(port, () => {
