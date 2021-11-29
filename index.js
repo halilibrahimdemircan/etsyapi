@@ -8,9 +8,9 @@ let url = "https://openapi.etsy.com/v3/application/listings/active";
 app.get("/", async (req, res) => {
   //   res.send("Hello World!");
 
-  let taxonomy_id = 66;
-  let min_price = 0.976;
-  let gap = 0.0111;
+  let taxonomy_id = 855;
+  let min_price = 4.09;
+  let gap = 0.4;
   let count = 1;
   for (let index = 0; index < count; index++) {
     await axios
